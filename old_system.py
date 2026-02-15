@@ -9,11 +9,13 @@ def run_system_monolith():
     print("...")
     print("WELCOME TO FLEET COMMAND")
     
-    
-    loading = 0
+
+    loading = 0   
+
+
     while loading < 5:
         print("Loading module " + str(loading))
-        
+        loading  += 1   # infinate loop 
     
     while True:
         print("\n--- MENU ---")
@@ -25,10 +27,10 @@ def run_system_monolith():
         
         opt = input("Select option: ")
         
-        if opt = "1":  
+        if opt == "1":  
             print("Current Crew List:")
             
-            for i in range(10):
+            for i in range(len(n)):   #scalable range
                 print(n[i] + " - " + r[i]) 
                 
         elif opt == "2":
@@ -40,30 +42,44 @@ def run_system_monolith():
             n.append(new_name)
             print("Crew member added.")
             
+            r.append(new_rank)   #rank and div so any new ranks and divs can be added
+
+            d.append(new_div)
+
+            
         elif opt == "3":
-            rem = input("Name to remove: ")
-           
-            idx = n.index(rem)
+            rem =  input("Name to remove:")
+            rem_cap = rem.capitalize()   #names have to be capitalised 
+            idx = n.index(rem_cap)
             n.pop(idx)
             r.pop(idx)
             d.pop(idx)
             print("Removed.")
+            if rem_cap != n:
+                print("see 'view crew'")
+            
+                                           #system runs but crashes with non listed names 
+          
+     
+              
+            
+
             
         elif opt == "4":
-            print("Analyzing...")
-            count = 0
+         print("Analyzing...")
+         count = 0
             
-            for rank in r:
-                if rank == "Captain" or "Commander": 
+         for rank in r:
+                if rank == "Captain" or rank =="Commander": # logic error, there was no second rank comparison 
                     count = count + 1
-            print("High ranking officers: " + count) 
+         print("High ranking officers:"+ str( count)  )  #string 
             
         elif opt == "5":
-            print("Shutting down.")
-            break
+             print("Shutting down.")
+             break
             
         else:
-            print("Invalid.")
+         print("Invalid.")
             
         
         x = 10
@@ -88,4 +104,4 @@ def run_system_monolith():
             
         print("End of cycle.")
 
-run_system_monolith
+run_system_monolith() # no brackets
